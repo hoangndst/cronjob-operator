@@ -5,7 +5,8 @@ pipeline {
     stages {
         stage('golangci-lint') {
             steps {
-                sh 'golangci-lint run --config ".golangci.yml" --out-format=colored-line-number'
+                sh 'dir'
+                sh 'golangci-lint run --config "cronjob-operator/.golangci.yml" --out-format=colored-line-number'
             }
         }
     }
