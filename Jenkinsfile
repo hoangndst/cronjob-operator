@@ -2,16 +2,12 @@ pipeline {
     agent {
         label 'operator-jenkins-agent'
     }
+    environment {
+        PATH = "/usr/local/go/bin:${PATH}"
+    }
 
     stages {
-        stage('Set up Go environment') {
-            steps {
-                script {
-                    env.PATH = "/usr/local/go/bin:${env.PATH}"
-                }
-            }
-        }
-        stage('golangci-lint') {
+        stage('Checkout') {
             steps {
                 sh 'golangci-lint run --out-format=colored-line-number'
             }
