@@ -1,16 +1,11 @@
 pipeline {
     agent {
-        label 'dynamic-agent'
+        label 'operator-jenkins-agent'
     }
-    tools {
-        go 'go-1.21'
-    }
-
     stages {
-        stage('Hello') {
+        stage('golangci-lint') {
             steps {
-                echo 'Hello World'
-                sh 'go version'
+                sh 'golangci-lint run --config ".golangci.yml" --out-format=colored-line-number'
             }
         }
     }
