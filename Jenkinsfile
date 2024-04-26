@@ -4,9 +4,11 @@ pipeline {
     }
 
     stages {
-        stage('Check go version') {
+        stage('Set up Go environment') {
             steps {
-                sh 'go version'
+                script {
+                    env.PATH = "/usr/local/go/bin:${env.PATH}"
+                }
             }
         }
         stage('golangci-lint') {
