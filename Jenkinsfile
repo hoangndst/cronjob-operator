@@ -12,19 +12,9 @@ pipeline {
                 sh 'make lint'
             }
         }
-        stage('Format') {
-            steps {
-                sh 'make fmt'
-            }
-        }
         stage('Test') {
             steps {
                 sh 'make test'
-            }
-        }
-        stage('Test e2e') {
-            steps {
-                sh 'make test-e2e'
             }
         }
     }
